@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rajwada Estates — Fine Homes, Bhawani Mandi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1B1A17;
+    --sandstone:#E4D9BE;
+    --sandstone-deep:#D8C9A3;
+    --ivory:#FAF7EF;
+    --brass:#9C7A3C;
+    --brass-light:#BEA05C;
+    --emerald:#28392F;
+    --emerald-light:#3A5044;
+    --clay:#8A4A2E;
+    --line: rgba(27,26,23,0.14);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--sandstone);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    font-weight:400;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.01ms !important; transition-duration:0.01ms !important;}
+  }
+  a{color:inherit; text-decoration:none;}
+  img{display:block; width:100%; height:100%; object-fit:cover;}
+  .eyebrow{
+    font-family:'Inter',sans-serif;
+    font-size:11px;
+    letter-spacing:0.22em;
+    text-transform:uppercase;
+    font-weight:600;
+    color:var(--brass);
+  }
+  h1,h2,h3{
+    font-family:'Fraunces',serif;
+    font-weight:500;
+    letter-spacing:-0.01em;
+    line-height:1.08;
+  }
+  .container{
+    max-width:1240px;
+    margin:0 auto;
+    padding:0 6vw;
+  }
+  :focus-visible{outline:2px solid var(--brass); outline-offset:3px;}
+
+  /* ---- Arch signature shape ---- */
+  .arch{
+    border-radius: 50% 50% 6px 6px / 26% 26% 0 0;
+    overflow:hidden;
+    position:relative;
+    background:var(--ink);
+  }
+
+  /* ---- Header ---- */
+  header{
+    position:fixed; top:0; left:0; right:0; z-index:50;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:22px 6vw;
+    background:linear-gradient(to bottom, rgba(27,26,23,0.55), transparent);
+    transition:background .4s ease, padding .4s ease;
+  }
+  header.scrolled{
+    background:var(--ivory);
+    box-shadow:0 1px 0 var(--line);
+    padding:14px 6vw;
+  }
+  .brand{
+    display:flex; align-items:center; gap:10px;
+    font-family:'Fraunces',serif;
+    font-size:20px;
+    letter-spacing:0.02em;
+    color:#fff;
+    transition:color .4s ease;
+  }
+  header.scrolled .brand{color:var(--ink);}
+  .brand svg{width:26px;height:26px; flex-shrink:0;}
+  .brand svg path{stroke:var(--brass);}
+  nav{display:flex; align-items:center; gap:36px;}
+  nav a.navlink{
+    font-size:13px; letter-spacing:0.06em; text-transform:uppercase; font-weight:500;
+    color:#fff; opacity:0.9; transition:color .4s ease, opacity .2s ease;
+  }
+  header.scrolled nav a.navlink{color:var(--ink);}
+  nav a.navlink:hover{opacity:1; color:var(--brass);}
+  .nav-cta{
+    padding:10px 20px;
+    border:1px solid rgba(255,255,255,0.6);
+    border-radius:2px;
+    font-size:13px; letter-spacing:0.05em;
+    color:#fff !important;
+    transition:all .4s ease;
+  }
+  header.scrolled .nav-cta{border-color:var(--ink); color:var(--ink) !important;}
+  .nav-cta:hover{background:var(--brass); border-color:var(--brass); color:#fff !important;}
+  .menu-toggle{display:none;}
+
+  /* ---- Hero ---- */
+  .hero{
+    display:grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    align-items:center;
+    gap:4vw;
+    min-height:100vh;
+    padding:140px 6vw 80px;
+  }
+  .hero-copy .eyebrow{margin-bottom:22px; display:block;}
+  .hero-copy h1{
+    font-size:clamp(38px, 5vw, 64px);
+    margin-bottom:26px;
+  }
+  .hero-copy h1 em{
+    font-style:italic; color:var(--brass); font-weight:400;
+  }
+  .hero-copy p{
+    max-width:440px;
+    font-size:16.5px;
+    color:rgba(27,26,23,0.75);
+    margin-bottom:36px;
+  }
+  .btn-row{display:flex; gap:16px; flex-wrap:wrap;}
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:15px 28px;
+    font-size:13px; letter-spacing:0.06em; text-transform:uppercase; font-weight:600;
+    border-radius:2px;
+    transition:all .25s ease;
+  }
+  .btn-primary{background:var(--ink); color:var(--ivory);}
+  .btn-primary:hover{background:var(--brass); color:#fff;}
+  .btn-ghost{border:1px solid var(--ink); color:var(--ink);}
+  .btn-ghost:hover{background:var(--ink); color:var(--ivory);}
+  .hero-frame{
+    aspect-ratio: 3/4.1;
+    box-shadow:0 30px 60px -20px rgba(27,26,23,0.4);
+  }
+  .hero-frame img{filter:saturate(0.96) contrast(1.02);}
+
+  /* ---- Manifesto strip ---- */
+  .manifesto{
+    background:var(--ink);
+    color:var(--ivory);
+    padding:110px 6vw;
+    text-align:center;
+  }
+  .manifesto p{
+    max-width:760px;
+    margin:0 auto;
+    font-family:'Fraunces',serif;
+    font-weight:400;
+    font-style:italic;
+    font-size:clamp(22px,2.6vw,32px);
+    line-height:1.5;
+    color:#F3EEE1;
+  }
+  .manifesto .rule{
+    width:44px; height:1px; background:var(--brass); margin:0 auto 34px;
+  }
+  .manifesto .sign{
+    margin-top:34px;
+    font-family:'Inter',sans-serif;
+    font-size:12px; letter-spacing:0.18em; text-transform:uppercase;
+    color:var(--brass-light);
+  }
+
+  /* ---- Residences ---- */
+  .residences{padding:120px 6vw 100px;}
+  .section-head{
+    display:flex; justify-content:space-between; align-items:flex-end;
+    margin-bottom:64px; gap:24px; flex-wrap:wrap;
+  }
+  .section-head h2{font-size:clamp(30px,3.4vw,42px);}
+  .section-head .eyebrow{margin-bottom:14px; display:block;}
+  .section-head p{max-width:380px; color:rgba(27,26,23,0.65); font-size:15px;}
+
+  .card-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:44px;
+  }
+  .card .arch{aspect-ratio:3/3.9; margin-bottom:22px;}
+  .card-tag{
+    font-size:11px; letter-spacing:0.16em; text-transform:uppercase; font-weight:600;
+    color:var(--brass); margin-bottom:10px; display:block;
+  }
+  .card h3{font-size:24px; margin-bottom:10px; font-weight:500;}
+  .card p{font-size:14.5px; color:rgba(27,26,23,0.68); margin-bottom:14px;}
+  .card-meta{
+    display:flex; gap:18px; font-size:12.5px; color:var(--emerald);
+    border-top:1px solid var(--line); padding-top:14px; font-weight:500;
+  }
+
+  /* ---- Philosophy ---- */
+  .philosophy{
+    background:var(--emerald);
+    color:var(--ivory);
+    padding:120px 6vw;
+  }
+  .philosophy .section-head p{color:rgba(250,247,239,0.65);}
+  .philosophy .section-head .eyebrow{color:var(--brass-light);}
+  .principles{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:50px;
+  }
+  .principle-icon{
+    width:34px; height:34px; margin-bottom:22px;
+  }
+  .principle h3{
+    font-size:20px; font-weight:500; margin-bottom:12px; color:#fff;
+  }
+  .principle p{font-size:14.5px; color:rgba(250,247,239,0.68);}
+
+  /* ---- Location ---- */
+  .location{
+    padding:110px 6vw;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:6vw;
+    align-items:center;
+  }
+  .location .eyebrow{margin-bottom:18px; display:block;}
+  .location h2{font-size:clamp(28px,3vw,38px); margin-bottom:22px;}
+  .location p{color:rgba(27,26,23,0.72); font-size:15.5px; margin-bottom:16px; max-width:460px;}
+  .location-stats{display:flex; gap:40px; margin-top:36px;}
+  .location-stats div span{display:block;}
+  .location-stats .num{font-family:'Fraunces',serif; font-size:30px; color:var(--brass);}
+  .location-stats .lbl{font-size:12px; letter-spacing:0.06em; text-transform:uppercase; color:rgba(27,26,23,0.55); margin-top:4px;}
+  .map-mark{
+    aspect-ratio:1/1;
+    background:var(--ivory);
+    border:1px solid var(--line);
+    display:flex; align-items:center; justify-content:center;
+    position:relative;
+    overflow:hidden;
+  }
+  .map-mark svg{width:60%; opacity:0.9;}
+
+  /* ---- Contact ---- */
+  .contact{
+    background:var(--sandstone-deep);
+    padding:110px 6vw;
+    border-top:1px solid var(--line);
+  }
+  .contact-box{
+    background:var(--ivory);
+    border:1px solid var(--line);
+    padding:6vw;
+    display:grid;
+    grid-template-columns:1.1fr 1fr;
+    gap:6vw;
+  }
+  .contact-box h2{font-size:clamp(28px,3.2vw,40px); margin-bottom:18px;}
+  .contact-box p.lead{color:rgba(27,26,23,0.68); max-width:420px; margin-bottom:8px;}
+  .note{
+    margin-top:18px;
+    font-size:12.5px;
+    color:var(--clay);
+    border-left:2px solid var(--clay);
+    padding-left:12px;
+    max-width:420px;
+  }
+  .contact-list{display:flex; flex-direction:column; gap:26px; justify-content:center;}
+  .contact-item .eyebrow{margin-bottom:6px; display:block;}
+  .contact-item a, .contact-item span.val{
+    font-family:'Fraunces',serif; font-size:21px;
+  }
+  .contact-item a:hover{color:var(--brass);}
+
+  footer{
+    background:var(--ink); color:rgba(250,247,239,0.55);
+    padding:34px 6vw;
+    display:flex; justify-content:space-between; align-items:center;
+    font-size:12.5px; letter-spacing:0.03em;
+    flex-wrap:wrap; gap:10px;
+  }
+  footer .brand-mini{color:var(--ivory); font-family:'Fraunces',serif; font-size:15px;}
+
+  /* ---- Reveal animation ---- */
+  .reveal{opacity:0; transform:translateY(22px); transition:opacity .8s ease, transform .8s ease;}
+  .reveal.in{opacity:1; transform:translateY(0);}
+
+  /* ---- Responsive ---- */
+  @media (max-width:900px){
+    nav{display:none;}
+    .menu-toggle{display:block; color:#fff; font-size:13px; letter-spacing:0.06em; text-transform:uppercase; border:1px solid rgba(255,255,255,0.7); padding:9px 16px; border-radius:2px;}
+    header.scrolled .menu-toggle{color:var(--ink); border-color:var(--ink);}
+    .hero{grid-template-columns:1fr; padding-top:120px;}
+    .hero-frame{order:-1; aspect-ratio:4/3;}
+    .card-grid{grid-template-columns:1fr; gap:56px;}
+    .principles{grid-template-columns:1fr; gap:44px;}
+    .location{grid-template-columns:1fr; gap:44px;}
+    .location .map-mark{order:-1; max-width:280px; margin:0 auto;}
+    .contact-box{grid-template-columns:1fr; padding:8vw 6vw;}
+    footer{flex-direction:column; text-align:center;}
+  }
+</style>
+</head>
+<body>
+
+<header id="siteHeader">
+  <a href="#top" class="brand">
+    <svg viewBox="0 0 24 24" fill="none"><path d="M4 20V11C4 6.5 7.5 3 12 3C16.5 3 20 6.5 20 11V20" stroke-width="1.4"/><path d="M4 20H20" stroke-width="1.4"/></svg>
+    RAJWADA
+  </a>
+  <nav>
+    <a class="navlink" href="#residences">Residences</a>
+    <a class="navlink" href="#philosophy">Philosophy</a>
+    <a class="navlink" href="#location">Location</a>
+    <a class="navlink nav-cta" href="#contact">Enquire</a>
+  </nav>
+  <button class="menu-toggle" onclick="document.getElementById('mmenu').classList.toggle('open')">Menu</button>
+</header>
+
+<div id="mmenu" style="display:none; position:fixed; inset:0; background:var(--ink); z-index:60; flex-direction:column; align-items:center; justify-content:center; gap:30px;">
+  <a class="navlink" style="color:#fff; font-size:20px;" href="#residences" onclick="document.getElementById('mmenu').classList.remove('open')">Residences</a>
+  <a class="navlink" style="color:#fff; font-size:20px;" href="#philosophy" onclick="document.getElementById('mmenu').classList.remove('open')">Philosophy</a>
+  <a class="navlink" style="color:#fff; font-size:20px;" href="#location" onclick="document.getElementById('mmenu').classList.remove('open')">Location</a>
+  <a class="navlink" style="color:var(--brass-light); font-size:20px;" href="#contact" onclick="document.getElementById('mmenu').classList.remove('open')">Enquire</a>
+  <button onclick="document.getElementById('mmenu').classList.remove('open')" style="color:#fff; margin-top:20px; border:1px solid rgba(255,255,255,0.4); padding:8px 18px;">Close</button>
+</div>
+
+<section class="hero" id="top">
+  <div class="hero-copy">
+    <span class="eyebrow">Rajwada Estates — Bhawani Mandi</span>
+    <h1>Fine living,<br>rooted in <em>Bhawani Mandi.</em></h1>
+    <p>Villas, residences and penthouses curated for those who judge a home by its silence, its light, and the quality of what was left out.</p>
+    <div class="btn-row">
+      <a href="#contact" class="btn btn-primary">Enquire Privately</a>
+      <a href="#residences" class="btn btn-ghost">View Residences</a>
+    </div>
+  </div>
+  <div class="hero-frame arch reveal">
+    <img src="https://images.unsplash.com/photo-1756435292384-1bf32eff7baf?fm=jpg&q=80&w=1400&auto=format&fit=crop" alt="A modern stone-accented luxury villa exterior at sunset">
+  </div>
+</section>
+
+<section class="manifesto">
+  <div class="container">
+    <div class="rule"></div>
+    <p class="reveal">"We do not simply list houses. Every home here has been walked through, questioned, and measured against one standard — would we live in it ourselves."</p>
+    <div class="sign">— The Rajwada Estates Charter</div>
+  </div>
+</section>
+
+<section class="residences" id="residences">
+  <div class="container">
+    <div class="section-head reveal">
+      <div>
+        <span class="eyebrow">Current Collection</span>
+        <h2>Three ways to<br>come home.</h2>
+      </div>
+      <p>A small, hand-picked set of residences — released quietly, shown by appointment, never advertised in bulk.</p>
+    </div>
+
+    <div class="card-grid">
+      <div class="card reveal">
+        <div class="arch">
+          <img src="https://images.unsplash.com/photo-1756435292384-1bf32eff7baf?fm=jpg&q=80&w=1200&auto=format&fit=crop" alt="Stone-accented luxury villa with a private garden">
+        </div>
+        <span class="card-tag">Villa</span>
+        <h3>The Stone Villa</h3>
+        <p>Thick sandstone walls that hold the Rajasthan sun outside where it belongs, a private courtyard, and a garden built for slow mornings.</p>
+        <div class="card-meta"><span>4 Bed</span><span>Private Garden</span><span>Bhawani Mandi</span></div>
+      </div>
+
+      <div class="card reveal">
+        <div class="arch">
+          <img src="https://images.unsplash.com/photo-1759238136854-a43787126db7?fm=jpg&q=80&w=1200&auto=format&fit=crop" alt="Minimalist luxury living room interior with warm neutral tones">
+        </div>
+        <span class="card-tag">Interior</span>
+        <h3>The Quiet Residence</h3>
+        <p>Warm timber, considered lighting, and rooms with nothing extra in them — only what earns its place in daily life.</p>
+        <div class="card-meta"><span>3 Bed</span><span>Interiors Fitted</span><span>Bhawani Mandi</span></div>
+      </div>
+
+      <div class="card reveal">
+        <div class="arch">
+          <img src="https://images.unsplash.com/photo-1568115286680-d203e08a8be6?fm=jpg&q=80&w=1200&auto=format&fit=crop" alt="Lavish penthouse interior with floor-to-ceiling glass windows">
+        </div>
+        <span class="card-tag">Penthouse</span>
+        <h3>The Penthouse Skyline</h3>
+        <p>Floor-to-ceiling glass, a private terrace, and a view that quietly changes with every hour of the day.</p>
+        <div class="card-meta"><span>Duplex</span><span>Terrace</span><span>Bhawani Mandi</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="philosophy" id="philosophy">
+  <div class="container">
+    <div class="section-head reveal">
+      <div>
+        <span class="eyebrow">How We Work</span>
+        <h2>Three quiet<br>disciplines.</h2>
+      </div>
+      <p>The parts of the process that don't make it into a brochure, but decide whether a home actually fits.</p>
+    </div>
+    <div class="principles">
+      <div class="principle reveal">
+        <svg class="principle-icon" viewBox="0 0 24 24" fill="none" stroke="#BEA05C" stroke-width="1.3"><path d="M4 20V11C4 6.5 7.5 3 12 3C16.5 3 20 6.5 20 11V20"/><path d="M4 20H20"/><circle cx="12" cy="12" r="2"/></svg>
+        <h3>Vastu-considered layouts</h3>
+        <p>Every floor plan we put forward is reviewed for direction and flow — a courtesy most listings in the region skip entirely.</p>
+      </div>
+      <div class="principle reveal">
+        <svg class="principle-icon" viewBox="0 0 24 24" fill="none" stroke="#BEA05C" stroke-width="1.3"><rect x="4" y="4" width="16" height="16" rx="1"/><path d="M4 10H20"/></svg>
+        <h3>No open listings</h3>
+        <p>We work with a small number of families at a time, by introduction and private viewing — not by mass advertisement.</p>
+      </div>
+      <div class="principle reveal">
+        <svg class="principle-icon" viewBox="0 0 24 24" fill="none" stroke="#BEA05C" stroke-width="1.3"><path d="M12 3L20 8V16L12 21L4 16V8L12 3Z"/></svg>
+        <h3>Personally inspected</h3>
+        <p>Every property is walked through by us, in person, before it's ever shown — the title, the structure, and the neighbourhood.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="location" id="location">
+  <div class="reveal">
+    <span class="eyebrow">Where We Build</span>
+    <h2>Bhawani Mandi, Rajasthan.</h2>
+    <p>A market town at the edge of Rajasthan, growing quietly. We believe the next generation of fine homes here won't be the loudest ones — they'll be the best considered.</p>
+    <p>Rajwada Estates works exclusively across Bhawani Mandi and its surrounding neighbourhoods, with every residence viewed in person before it reaches our list.</p>
+    <div class="location-stats">
+      <div><span class="num">01</span><span class="lbl">City of Focus</span></div>
+      <div><span class="num">100%</span><span class="lbl">In-Person Verified</span></div>
+      <div><span class="num">By&nbsp;Appt.</span><span class="lbl">Private Viewings</span></div>
+    </div>
+  </div>
+  <div class="map-mark reveal">
+    <svg viewBox="0 0 24 24" fill="none" stroke="#9C7A3C" stroke-width="1"><path d="M12 21C12 21 19 14.5 19 9.5C19 5.36 15.64 2 12 2C8.36 2 5 5.36 5 9.5C5 14.5 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.6"/></svg>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="contact-box reveal">
+      <div>
+        <span class="eyebrow">Enquire Privately</span>
+        <h2>Let's find your<br>next address.</h2>
+        <p class="lead">Reach out directly — no forms, no waiting list. We reply to every serious enquiry ourselves, usually within a day.</p>
+        <p class="note">Note for Devesh: your phone (73401*****) and email (484.devesh****) were shared partially masked — please drop in the full digits before this site goes live, they're placeholders below.</p>
+      </div>
+      <div class="contact-list">
+        <div class="contact-item">
+          <span class="eyebrow">Call</span>
+          <a href="tel:+9173401XXXXX">+91 73401 XXXXX</a>
+        </div>
+        <div class="contact-item">
+          <span class="eyebrow">Email</span>
+          <a href="mailto:484.devesh****@example.com">484.devesh****@&hairsp;&mdash;&hairsp;.com</a>
+        </div>
+        <div class="contact-item">
+          <span class="eyebrow">Studio</span>
+          <span class="val">Bhawani Mandi, Rajasthan</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="brand-mini">RAJWADA ESTATES</span>
+  <span>Bhawani Mandi, Rajasthan · Fine homes, privately shown</span>
+  <span>&copy; 2026</span>
+</footer>
+
+<script>
+  const header = document.getElementById('siteHeader');
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 40);
+  });
+  const mmenu = document.getElementById('mmenu');
+  const toggleBtn = document.querySelector('.menu-toggle');
+  const observer2 = new MutationObserver(() => {
+    mmenu.style.display = mmenu.classList.contains('open') ? 'flex' : 'none';
+  });
+  observer2.observe(mmenu, {attributes:true});
+
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, {threshold:0.15});
+  revealEls.forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>
